@@ -4,12 +4,14 @@ name: TEST
 
 # Controls when the workflow will run
 on:
+  discussion:
+    types: [created]
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    inputs:
-       title:
-            description: 'Title'
-            required: true
+  #workflow_dispatch:
+  #  inputs:
+  #     title:
+  #          description: 'Title'
+  #          required: true
 permissions:
   actions: read
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -25,4 +27,6 @@ jobs:
       - uses: actions/checkout@v2
       # Runs a single command using the runners shell
       - name: test step
-        run: echo Hello, world ${{github.event.inputs.title}}!
+        #run: echo Hello, world ${{github.event.inputs.title}}!
+        run: echo Hello, world ${{github.event.discussion.title}}!
+        
