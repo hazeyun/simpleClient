@@ -27,6 +27,8 @@ jobs:
       - uses: actions/checkout@v2
       # Runs a single command using the runners shell
       - name: test step
+        env:
+          TITLE: ${{github.event.discussion.title}}
         #run: echo Hello, world ${{github.event.inputs.title}}!
-        run: echo Hello, world ${{github.event.discussion.title}}!
+        run: echo Hello, world "$TITLE"!
         
